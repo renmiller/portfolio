@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <!-- Add Font Awesome stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Link to external CSS specific to the project -->
+    <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
+</head>
+
+<body>
+    <section id="about">
+        <div class="about-content">
+            <div class="left-column">
+                <img src="/img/headshot.jpg" alt="Headshot" class="headshot">
+                <div class="box" id="box1" onclick="toggleContent('box1')">
+                    <h2><i class="fas fa-lightbulb"></i> My Content Philosophy</h2>
+                    <p class="content">When it comes to content creation, I believe the magic lies in the perfect blend of metric-backed strategy and human creativity. I take great pride in developing brand voices that stand out in a sea of noise and genuinely resonate with their intended audiences. The ever-shifting puzzle of SEO keeps me on my toes, and I love seeing my articles soar to the top of search results. While I firmly believe in the necessity of KPI spreadsheets and organized content calendars, I equally appreciate boundary-pushing innovation.</p>
+                </div>
+                <div class="box" id="box2" onclick="toggleContent('box2')">
+                    <h2><i class="fas fa-bolt"></i> How AI Changed Everything</h2>
+                    <p class="content">When AI started making waves in late 2022, I saw incredible potential. I realized that automating certain aspects of content creation could allow me to take on the workload of three (or more!) writers. Intrigued, I dove deep into the world of generative AI, learning everything I could. I've developed detailed style guides specifically for AI use, invested countless hours into prompt engineering, and written all kinds of automated scripts to create a streamlined process for high-quality AI-assisted content.</p>
+                </div>
+                <div class="box" id="box3" onclick="toggleContent('box3')">
+                    <h2><i class="fas fa-book-open"></i> Life Beyond Work</h2>
+                    <p class="content">Outside of my professional life, I enjoy creative writing (ask me about the sci-fi novel I'll never finish), reading (I'm currently working my way through <u>War and Peace</u>), and exploring the outdoors (although I will admit to being a very slow hiker).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript to handle the content toggle -->
+    <script>
+        function toggleContent(id) {
+            var box = document.getElementById(id);
+            var content = box.querySelector('.content');
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+        }
+        // Hide all content initially
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.content').forEach(function(content) {
+                content.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

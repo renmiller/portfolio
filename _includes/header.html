@@ -1,10 +1,27 @@
 <header>
     <div class="header-content">
         <div class="header-content-inner">
-            <h1>Your Favorite Source of Free Bootstrap Themes</h1>
+            <h1>Hi, I'm Ren</h1>
             <hr>
-            <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-            <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            <div>
+                <p class="dark-brown-text">Transforming complex concepts into compelling narratives with innovative AI-driven strategies.</p>
+            </div>
+            <a href="#portfolio" class="btn btn-primary btn-xl page-scroll">View My Work</a>
         </div>
     </div>
 </header>
+
+<!-- Include the SVG filter definition -->
+<svg width="0" height="0">
+  <defs>
+    <filter id="outline-effect">
+      <feFlood flood-color="rgba(250, 245, 237, 0.7)" result="color" />
+      <feComposite in="color" in2="SourceAlpha" operator="in" result="coloredAlpha" />
+      <feGaussianBlur in="coloredAlpha" stdDeviation="3" result="blurred" />
+      <feMerge>
+        <feMergeNode in="blurred" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+</svg>

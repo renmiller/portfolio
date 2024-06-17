@@ -1,44 +1,279 @@
 ---
 ---
 
+// Your existing SCSS code follows
 @charset "utf-8";
 
-// Example Defaults
-// $base-font-family: Helvetica, Arial, sans-serif;
-// $base-font-size:   16px;
-// $small-font-size:  $base-font-size * 0.875;
-// $base-line-height: 1.5;
+// Variables
+$background-color: #faf5ed; /* Eggshell background & text color for elements previously white */
+$text-light-color: #faf5ed;
+$brand-color: #304d3a; /* Sage Green */
+$dark-brown-color: #2B1B0E; /* Dark brown color for text */
+$navbar-scroll-background: $background-color; /* Same color as $background-color */
+$theme-primary: $brand-color; /* Sage Green for theme primary color */
+$theme-dark: $dark-brown-color; /* Dark brown for theme dark */
+$transition-duration: 0.3s;
 
-// $spacing-unit:     30px;
+// Body styles
+body {
+  background-color: $background-color; /* Eggshell */
+  color: $dark-brown-color; /* Default text color */
+  font-family: 'Hind Siliguri', sans-serif !important; /* Body font */
+}
 
-// $text-color:       #111;
-// $background-color: #fdfdfd;
-// $brand-color:      #2a7ae2;
+/* Specific styles for header text */
+.header-content-inner h1 {
+  color: $text-light-color !important; /* Eggshell color */
+}
 
-// $grey-color:       #828282;
-// $grey-color-light: lighten($grey-color, 40%);
-// $grey-color-dark:  darken($grey-color, 25%);
+/* Paragraph in header to dark brown text with transparent eggshell outline */
+/* Use a more specific selector to avoid conflicts with other styles */
+.header-content .header-content-inner p.dark-brown-text {
+  color: $dark-brown-color !important; /* Dark brown color */
+  filter: url(#outline-effect); /* Apply the SVG filter */
+}
 
-// // Width of the content area
-// $content-width:    800px;
+// Apply Josefin Sans to headers
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Josefin Sans', sans-serif !important;
+}
 
-// $on-palm:          600px;
-// $on-laptop:        800px;
+// Site header styles
+.site-header {
+  color: $dark-brown-color; /* Apply dark brown to all text within header */
 
-// Using media queries with like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
+  h1, h2, h3, h4, h5, h6, p {
+    color: $dark-brown-color;
+  }
 
-// variables.less
-$theme-primary: #F05F40;
-$theme-dark: #222;
+  a {
+    color: $dark-brown-color; /* Link color within the header */
+  }
+}
 
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "mixins",
-        "base"
-;
+// Navbar styles
+// Base styles for the navbar
+.navbar-default {
+  background-color: transparent;
+  transition: background-color $transition-duration ease-in-out, color $transition-duration ease-in-out;
+
+  .navbar-brand,
+  .navbar-nav > li > a {
+    color: $text-light-color !important;
+    transition: color $transition-duration ease-in-out;
+    position: relative;
+
+    // Pseudo-element for hover effect
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: $brand-color;
+      position: absolute;
+      left: 50%;
+      bottom: -4px;  // Slightly below the text
+      transition: width $transition-duration ease-in-out, left $transition-duration ease-in-out;
+      transform: translateX(-50%);
+    }
+
+    // Expand the line on hover
+    &:hover::after,
+    &:focus::after {
+      width: 80%;
+      left: 50%;
+    }
+  }
+
+  .navbar-nav > li > a.active::after, 
+  .navbar-nav > li > a:focus::after { 
+      width: 0;
+      left: 50%;
+  }
+
+  // Styles for active items without persisting hover effect
+  .navbar-nav > li.active > a {
+    font-weight: bold !important;
+    color: $brand-color !important; // Sage Green
+  }
+
+  // Reset the line by default
+  .navbar-nav > li > a {
+    &::after {
+      width: 0;
+    }
+  }
+}
+
+// Styles for navbar when scrolled
+.navbar-default.scrolled {
+  background-color: $background-color !important;
+
+  .navbar-brand,
+  .navbar-nav > li > a {
+    color: $brand-color !important; // Sage Green
+  }
+
+  .navbar-nav > li.active > a {
+    font-weight: bold !important;
+    color: $brand-color !important; // Sage Green
+  }
+
+  // Reset the line by default
+  .navbar-nav > li > a {
+    &:hover::after,
+    &:focus::after {
+      width: 80%;
+      left: 50%;
+    }
+    &::after {
+      width: 0;
+    }
+  }
+}
+
+// Portfolio hover effect
+.portfolio-box:hover .portfolio-box-caption {
+  background-color: $brand-color; /* Sage green overlay */
+  color: $text-light-color;
+}
+
+.portfolio-box:hover .portfolio-box-caption .project-category,
+.portfolio-box:hover .portfolio-box-caption .project-name {
+  color: $text-light-color;
+}
+
+// Font Awesome styles
+.fa,
+.fa-envelope-o,
+.fa-linkedin,
+.fa-google,
+.fa-slack,
+.fa-wordpress {
+  color: inherit;
+  font-family: FontAwesome, 'Helvetica', sans-serif;
+}
+
+.contact .fa,
+.skills .fa {
+  color: $dark-brown-color !important;
+  &.skills {
+    font-size: 4em;
+  }
+}
+
+// About section
+#about {
+  background-color: $background-color;
+  color: $dark-brown-color;
+
+  h1 {
+    color: $dark-brown-color;
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 1em;
+    letter-spacing: 2px;
+
+    &:nth-of-type(3) {
+      margin-bottom: 0;
+    }
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .left-column {
+      max-width: 800px;
+
+      .headshot {
+        display: block;
+        border-radius: 50%;
+        margin: 0 auto 2.5em;
+        width: 300px;
+        height: 300px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .box {
+        margin-bottom: 1em;
+        cursor: pointer;
+        padding: 0.5em 1em;
+        transition: color 0.3s ease-in-out;
+
+        h2 {
+          color: $dark-brown-color;
+          margin-bottom: 0.5em;
+          font-size: 1.8em;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
+
+        i {
+          color: $brand-color;
+          font-size: 1.8em;
+          transition: transform 0.3s ease-in-out;
+        }
+
+        &:hover i {
+          transform: rotate(10deg);
+        }
+
+        .content {
+          margin-top: 0.5em;
+          display: none;
+          color: $dark-brown-color;
+          line-height: 1.6;
+          border-left: 3px solid $brand-color;
+          padding-left: 1em;
+          font-size: 1em;
+        }
+
+        &:hover h2 {
+          color: $brand-color;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// Portfolio styles
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 15px;
+    justify-items: center;
+}
+
+.portfolio-box {
+    position: relative;
+    max-width: 350px;
+    overflow: hidden;
+    margin: auto;
+    text-decoration: none;
+    color: inherit;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+}
+
+// Import partials
+@import "mixins", "base";

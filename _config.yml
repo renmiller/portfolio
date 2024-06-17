@@ -1,12 +1,22 @@
 # Site settings
-title:
-email:
-description: > # this means to ignore newlines until "baseurl:"
+title: "Ren Miller - Creative Content Strategist"
+email: "laugramil@gmail.com"
+description: >
+  Online portfolio for Ren Miller
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "" # the base hostname & protocol for your site
 
-twitter_username:
-github_username:
-
 # Build settings
 markdown: kramdown
+
+# Sass configuration
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Excludes
+exclude:
+  - node_modules
+  - vendor/bundle
+  - Gemfile
+  - Gemfile.lock
